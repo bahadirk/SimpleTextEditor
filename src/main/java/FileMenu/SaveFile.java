@@ -2,15 +2,15 @@ package FileMenu;
 
 public class SaveFile extends FileMenuCommand {
 
-	FileMenuExecution fileMenu;
+	FileMenuExecution fileMenuExecution;
 	
 	public SaveFile(FileMenuExecution fileMenu) {
-		this.fileMenu = fileMenu;
+		this.fileMenuExecution = fileMenu;
 	}
 
 	@Override
 	public void execute() {
-		fileMenu.saveFile();
+		fileMenuExecution.saveFile();
 	}
 
 }

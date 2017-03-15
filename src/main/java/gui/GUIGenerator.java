@@ -56,6 +56,7 @@ public class GUIGenerator {
 		//File Menu Items
 		JMenuItem open = new JMenuItem("Open");
 		JMenuItem save = new JMenuItem("Save");
+		JMenuItem exit = new JMenuItem("Exit");
 	
 	
 		save.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, KeyEvent.CTRL_DOWN_MASK));
@@ -63,6 +64,7 @@ public class GUIGenerator {
 		
 		fileMenu.add(open);
 		fileMenu.add(save);
+		fileMenu.add(exit);
 
 		mainFrame.add(menuBar, BorderLayout.NORTH);
 	}

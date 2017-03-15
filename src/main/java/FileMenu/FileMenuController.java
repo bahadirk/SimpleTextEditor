@@ -18,6 +18,7 @@ public class FileMenuController {
 	JMenu fileMenu;
 	FileMenuCommand openFile;
 	FileMenuCommand saveFile;
+	FileMenuCommand exitFile;
 
 	public FileMenuController(JMenu fileMenu, JEditorPane textArea){
 		
@@ -32,11 +33,13 @@ public class FileMenuController {
 		this.fileMenuExecution = new FileMenuExecution(textArea);	
 		openFile = new OpenFile(fileMenuExecution);
 		saveFile = new SaveFile(fileMenuExecution);
+		exitFile = new ExitFile(fileMenuExecution);
 	}
 	
 	private void generateFileMenuHandlers(){
 		pressOpenFile();
 		pressSaveFile();
+		pressExitFile();
 	}
 
 	private void pressOpenFile(){
@@ -66,6 +69,19 @@ public class FileMenuController {
 		saveAction.putValue(Action.ACCELERATOR_KEY,KeyStroke.getKeyStroke(KeyEvent.VK_S, Toolkit.getDefaultToolkit ().getMenuShortcutKeyMask()));
 		saveFileMenuItem.setAction(saveAction);
 		
+	}
+	
+	private void pressExitFile(){
+		JMenuItem exitFileMenuItem = fileMenu.getItem(2);
+		
+		Action saveAction = new AbstractAction("Exit") {
+			 
+		    public void actionPerformed(ActionEvent e) {
+		    	exitFile.execute();
+		    }
+		};
+		
+		exitFileMenuItem.setAction(saveAction);
 	}
 
 }

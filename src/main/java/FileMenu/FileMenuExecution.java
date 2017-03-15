@@ -19,7 +19,7 @@ public class FileMenuExecution {
 
 	public FileMenuExecution(JEditorPane textArea){
 		this.textArea = textArea;
-		
+
 	}
 
 	public void openFile(){
@@ -39,7 +39,7 @@ public class FileMenuExecution {
 				//BufferedReader reader = new BufferedReader(new FileReader(selectedFile));
 				while(reader.hasNextLine()){
 					String currentLine = reader.nextLine();
-					
+
 					if(!currentLine.isEmpty()){
 						context += currentLine;
 					}
@@ -67,30 +67,41 @@ public class FileMenuExecution {
 
 		if (returnValue == JFileChooser.APPROVE_OPTION) {
 
-			if(fileChooser.getSelectedFile().exists()){
+			boolean isOverwrite = false;
 
+			if(fileChooser.getSelectedFile().exists()){
 				int option = JOptionPane.showConfirmDialog(fileChooser, 
 						"Do you want to overwrite file?", 
 						"Confirm overwrite", 
 						JOptionPane.YES_NO_OPTION);
 
 				if (option == JOptionPane.YES_OPTION){
-					try {
-						FileWriter fileWriter = new FileWriter(fileChooser.getSelectedFile().getPath());
-						BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-						bufferedWriter.write(textArea.getText());
-
-						bufferedWriter.close();
-						fileWriter.close();
-
-						fileChooser.approveSelection();
-
-					} catch (IOException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
+					isOverwrite = true;
+					fileChooser.approveSelection();
 				}
 			}
+			
+			try {
+				FileWriter fileWriter = new FileWriter(fileChooser.getSelectedFile().getPath(), isOverwrite);
+				BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+				bufferedWriter.write(textArea.getText());
+				bufferedWriter.close();
+				fileWriter.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			
+			JOptionPane.showMessageDialog(null, "File saved");
+		}
+	}
+
+	public void exitFile(){
+		System.out.println("Exit");
+		int result = JOptionPane.showConfirmDialog(null, "Are you sure?");
+
+		if(result == JOptionPane.OK_OPTION){
+			this.saveFile();
+			System.exit(0);
 		}
 	}
 }

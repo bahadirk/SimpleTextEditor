@@ -2,15 +2,15 @@ package FileMenu;
 
 public class OpenFile extends FileMenuCommand{
 
-	FileMenuExecution fileMenu;
+	FileMenuExecution fileMenuExecution;
 	
 	public OpenFile(FileMenuExecution fileMenu) {
-		this.fileMenu = fileMenu;
+		this.fileMenuExecution = fileMenu;
 	}
 
 	@Override
 	public void execute() {
-		fileMenu.openFile();
+		fileMenuExecution.openFile();
 	}
 
 }
