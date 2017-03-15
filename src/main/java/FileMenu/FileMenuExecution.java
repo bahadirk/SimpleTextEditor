@@ -1,23 +1,23 @@
 package FileMenu;
 
-import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Scanner;
 
+import javax.swing.JEditorPane;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
-import javax.swing.JTextArea;
 
 public class FileMenuExecution {
 
-	JTextArea textArea;
+	JEditorPane textArea;
 	File currentDirectory = new File(System.getProperty("user.dir"));
 
-	public FileMenuExecution(JTextArea textArea){
+	public FileMenuExecution(JEditorPane textArea){
 		this.textArea = textArea;
 		
 	}
@@ -26,6 +26,7 @@ public class FileMenuExecution {
 
 		JFileChooser fileChooser = new JFileChooser();
 		fileChooser.setCurrentDirectory(currentDirectory);
+		fileChooser.setDialogTitle("Open File");
 
 		int returnValue = fileChooser.showOpenDialog(null);
 
@@ -34,17 +35,21 @@ public class FileMenuExecution {
 			String context = "";
 
 			try {
-				//Scanner reader = new Scanner(new FileReader(selectedFile));
-				BufferedReader reader = new BufferedReader(new FileReader(selectedFile));
-				while((context = reader.readLine()) != null){
-					textArea.append(context);
+				Scanner reader = new Scanner(new FileReader(selectedFile));
+				//BufferedReader reader = new BufferedReader(new FileReader(selectedFile));
+				while(reader.hasNextLine()){
+					String currentLine = reader.nextLine();
+					
+					if(!currentLine.isEmpty()){
+						System.out.println(currentLine);
+						context += currentLine;
+					}
+					context += "\n";
 				}
+				textArea.setText(context);
 				reader.close();
 
 			} catch (FileNotFoundException e) {
-				e.printStackTrace();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} 
 		}
@@ -54,6 +59,7 @@ public class FileMenuExecution {
 
 		JFileChooser fileChooser = new JFileChooser();
 		fileChooser.setCurrentDirectory(currentDirectory);
+		fileChooser.setDialogTitle("Save File");
 
 		fileChooser.setDialogTitle("Choose a directory to save your file: ");
 		fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);

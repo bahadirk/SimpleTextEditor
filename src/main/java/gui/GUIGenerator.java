@@ -3,12 +3,14 @@ package gui;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 
+import javax.swing.JEditorPane;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 public class GUIGenerator {
@@ -18,7 +20,7 @@ public class GUIGenerator {
 	
 	private JFrame mainFrame;
 	private JMenuBar menuBar;
-	private JTextArea textArea;
+	private JEditorPane textArea;
 
 	public GUIGenerator(String name){
 		createMainFrame(name);
@@ -59,11 +61,9 @@ public class GUIGenerator {
 	}
 
 	private void createTextArea(){
-		textArea = new JTextArea();
-		textArea.setLineWrap(true);
+		textArea = new JEditorPane();
 		textArea.setEditable(true);
-		textArea.setWrapStyleWord(false);
-		mainFrame.add(textArea, BorderLayout.CENTER);
+		mainFrame.add(new JScrollPane(textArea), BorderLayout.CENTER);
 	}
 	
 	private void createInfoSection(){
@@ -97,7 +97,7 @@ public class GUIGenerator {
 		return menuBar;
 	}
 
-	public JTextArea getTextArea() {
+	public JEditorPane getTextArea() {
 		return textArea;
 	}
 	

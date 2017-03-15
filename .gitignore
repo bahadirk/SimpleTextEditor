@@ -1,6 +1,6 @@
 *.class
 *.DS_Store
-
+*.project
 
 src/main/resources/
 src/test/resources/

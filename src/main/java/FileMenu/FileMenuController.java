@@ -3,6 +3,7 @@ package FileMenu;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JEditorPane;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.JTextArea;
@@ -14,7 +15,7 @@ public class FileMenuController {
 	FileMenuCommand openFile;
 	FileMenuCommand saveFile;
 
-	public FileMenuController(JMenu fileMenu, JTextArea textArea){
+	public FileMenuController(JMenu fileMenu, JEditorPane textArea){
 		
 		this.fileMenu = fileMenu;
 			
@@ -23,7 +24,7 @@ public class FileMenuController {
 		
 	}
 	
-	private void generateFileMenuExecutions(JTextArea textArea){
+	private void generateFileMenuExecutions(JEditorPane textArea){
 		this.fileMenuExecution = new FileMenuExecution(textArea);	
 		openFile = new OpenFile(fileMenuExecution);
 		saveFile = new SaveFile(fileMenuExecution);
