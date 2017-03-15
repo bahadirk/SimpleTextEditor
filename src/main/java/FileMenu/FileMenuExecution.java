@@ -41,7 +41,6 @@ public class FileMenuExecution {
 					String currentLine = reader.nextLine();
 					
 					if(!currentLine.isEmpty()){
-						System.out.println(currentLine);
 						context += currentLine;
 					}
 					context += "\n";

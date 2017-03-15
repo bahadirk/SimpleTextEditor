@@ -1,12 +1,16 @@
 package FileMenu;
 
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 
+import javax.swing.AbstractAction;
+import javax.swing.Action;
 import javax.swing.JEditorPane;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
-import javax.swing.JTextArea;
+import javax.swing.KeyStroke;
 
 public class FileMenuController {
 
@@ -37,23 +41,30 @@ public class FileMenuController {
 
 	private void pressOpenFile(){
 		JMenuItem openFileMenuItem = fileMenu.getItem(0);
-
-		openFileMenuItem.addActionListener(new ActionListener() {
+		
+		Action openAction = new AbstractAction("Open"){
 			public void actionPerformed(ActionEvent e) {
 				openFile.execute();
 			}
-		});
+		};
+		
+		openAction.putValue(Action.ACCELERATOR_KEY,KeyStroke.getKeyStroke(KeyEvent.VK_O, Toolkit.getDefaultToolkit ().getMenuShortcutKeyMask()));
+		openFileMenuItem.setAction(openAction);
 
 	}
 
 	private void pressSaveFile(){
 		JMenuItem saveFileMenuItem = fileMenu.getItem(1);
-
-		saveFileMenuItem.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				saveFile.execute();
-			}
-		});
+		
+		Action saveAction = new AbstractAction("Save") {
+			 
+		    public void actionPerformed(ActionEvent e) {
+		    	saveFile.execute();
+		    }
+		};
+		
+		saveAction.putValue(Action.ACCELERATOR_KEY,KeyStroke.getKeyStroke(KeyEvent.VK_S, Toolkit.getDefaultToolkit ().getMenuShortcutKeyMask()));
+		saveFileMenuItem.setAction(saveAction);
 		
 	}
 
