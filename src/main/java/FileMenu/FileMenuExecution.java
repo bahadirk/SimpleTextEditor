@@ -16,10 +16,10 @@ public class FileMenuExecution {
 
 	JEditorPane textArea;
 	File currentDirectory = new File(System.getProperty("user.dir"));
-
+	String currentFilePath;
+	
 	public FileMenuExecution(JEditorPane textArea){
 		this.textArea = textArea;
-
 	}
 
 	public void openFile(){
@@ -31,12 +31,12 @@ public class FileMenuExecution {
 		int returnValue = fileChooser.showOpenDialog(null);
 
 		if (returnValue == JFileChooser.APPROVE_OPTION) {
-			File selectedFile = fileChooser.getSelectedFile();
+			currentFilePath = fileChooser.getSelectedFile().getPath();
 			String context = "";
+			textArea.setText("");
 
 			try {
-				Scanner reader = new Scanner(new FileReader(selectedFile));
-				//BufferedReader reader = new BufferedReader(new FileReader(selectedFile));
+				Scanner reader = new Scanner(new FileReader(currentFilePath));
 				while(reader.hasNextLine()){
 					String currentLine = reader.nextLine();
 
@@ -55,7 +55,21 @@ public class FileMenuExecution {
 	}
 
 	public void saveFile(){
-
+		if(currentFilePath == null){
+			saveAsFile();
+		}else{
+			try {
+				FileWriter fileWriter = new FileWriter(currentFilePath, false);
+				fileWriter.write(textArea.getText());
+				fileWriter.close();
+				JOptionPane.showMessageDialog(null, "File saved");
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	public void saveAsFile(){
 		JFileChooser fileChooser = new JFileChooser();
 		fileChooser.setCurrentDirectory(currentDirectory);
 		fileChooser.setDialogTitle("Save File");
@@ -66,9 +80,6 @@ public class FileMenuExecution {
 		int returnValue = fileChooser.showSaveDialog(null);
 
 		if (returnValue == JFileChooser.APPROVE_OPTION) {
-
-			boolean isOverwrite = false;
-
 			if(fileChooser.getSelectedFile().exists()){
 				int option = JOptionPane.showConfirmDialog(fileChooser, 
 						"Do you want to overwrite file?", 
@@ -76,23 +87,18 @@ public class FileMenuExecution {
 						JOptionPane.YES_NO_OPTION);
 
 				if (option == JOptionPane.YES_OPTION){
-					isOverwrite = true;
 					fileChooser.approveSelection();
 				}
 			}
-			
 			try {
-				FileWriter fileWriter = new FileWriter(fileChooser.getSelectedFile().getPath(), isOverwrite);
-				BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-				bufferedWriter.write(textArea.getText());
-				bufferedWriter.close();
+				currentFilePath = fileChooser.getSelectedFile().getPath();
+				FileWriter fileWriter = new FileWriter(currentFilePath);
+				fileWriter.write(textArea.getText());
 				fileWriter.close();
 				JOptionPane.showMessageDialog(null, "File saved");
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-			
-			
 		}
 	}
 

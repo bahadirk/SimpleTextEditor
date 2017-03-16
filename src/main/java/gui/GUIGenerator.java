@@ -60,11 +60,14 @@ public class GUIGenerator {
 		//File Menu Items
 		JMenuItem open = new JMenuItem("Open");
 		JMenuItem save = new JMenuItem("Save");
+		JMenuItem saveAs = new JMenuItem("Save As");
 		JMenuItem exit = new JMenuItem("Exit");
 		save.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, KeyEvent.CTRL_DOWN_MASK));
 		open.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_O, KeyEvent.CTRL_DOWN_MASK));
+//		saveAs.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, KeyEvent.CTRL_DOWN_MASK | KeyEvent.SHIFT_DOWN_MASK));
 		fileMenu.add(open);
 		fileMenu.add(save);
+		fileMenu.add(saveAs);
 		fileMenu.add(exit);
 		
 		
