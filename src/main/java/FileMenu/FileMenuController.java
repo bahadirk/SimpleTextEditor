@@ -13,13 +13,13 @@ import javax.swing.JMenuItem;
 import javax.swing.KeyStroke;
 
 public class FileMenuController {
-
-	FileMenuExecution fileMenuExecution;
+	
 	JMenu fileMenu;
 	FileMenuCommand openFile;
 	FileMenuCommand saveFile;
 	FileMenuCommand exitFile;
-
+	FileMenuExecution fileMenuExecution;
+	
 	public FileMenuController(JMenu fileMenu, JEditorPane textArea){
 		
 		this.fileMenu = fileMenu;

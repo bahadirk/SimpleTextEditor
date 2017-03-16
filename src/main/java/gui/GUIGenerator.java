@@ -61,14 +61,17 @@ public class GUIGenerator {
 		JMenuItem open = new JMenuItem("Open");
 		JMenuItem save = new JMenuItem("Save");
 		JMenuItem exit = new JMenuItem("Exit");
-	
-	
 		save.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, KeyEvent.CTRL_DOWN_MASK));
 		open.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_O, KeyEvent.CTRL_DOWN_MASK));
-		
 		fileMenu.add(open);
 		fileMenu.add(save);
 		fileMenu.add(exit);
+		
+		
+		//Find Menu Items
+		JMenuItem find = new JMenuItem("Find");
+		find.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F, KeyEvent.CTRL_DOWN_MASK));
+		findMenu.add(find);
 
 		mainFrame.add(menuBar, BorderLayout.NORTH);
 	}
@@ -83,9 +86,9 @@ public class GUIGenerator {
 		
 		JPanel panel = new JPanel(new FlowLayout());
 		
-		JLabel label1 = new JLabel("Label1");
-		JLabel label2 = new JLabel("Label2");
-		JLabel label3 = new JLabel("Label3");
+		JLabel label1 = new JLabel("");
+		JLabel label2 = new JLabel("");
+		JLabel label3 = new JLabel("");
 		
 		panel.add(label1, FlowLayout.LEFT);
 		panel.add(label2, FlowLayout.CENTER);
