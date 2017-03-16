@@ -87,20 +87,25 @@ public class FileMenuExecution {
 				bufferedWriter.write(textArea.getText());
 				bufferedWriter.close();
 				fileWriter.close();
+				JOptionPane.showMessageDialog(null, "File saved");
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 			
-			JOptionPane.showMessageDialog(null, "File saved");
+			
 		}
 	}
 
 	public void exitFile(){
-		System.out.println("Exit");
 		int result = JOptionPane.showConfirmDialog(null, "Are you sure?");
 
 		if(result == JOptionPane.OK_OPTION){
-			this.saveFile();
+			String n = textArea.getText();
+			System.out.println(n);
+			if(textArea.getText() != ""){
+				this.saveFile();	
+			}
+
 			System.exit(0);
 		}
 	}

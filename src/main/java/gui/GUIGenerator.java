@@ -1,8 +1,9 @@
 package gui;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
-import java.awt.event.ActionEvent;
+import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 
 import javax.swing.JEditorPane;
@@ -36,7 +37,10 @@ public class GUIGenerator {
 	private void createMainFrame(String name){
 		mainFrame = new JFrame(name);
 		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 		mainFrame.setSize(WIDTH, HEIGHT);
+		mainFrame.setLocation(dim.width/2-mainFrame.getSize().width/2, 
+				dim.height/2-mainFrame.getSize().height/2);
 	}
 
 	private void createMainPanel(){
