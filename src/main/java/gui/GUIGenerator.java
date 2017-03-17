@@ -18,8 +18,8 @@ import javax.swing.KeyStroke;
 
 public class GUIGenerator {
 
-	private final int WIDTH = 400;
-	private final int HEIGHT = 400;
+	private final int WIDTH = 700;
+	private final int HEIGHT = 700;
 	
 	private JFrame mainFrame;
 	private JMenuBar menuBar;
