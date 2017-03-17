@@ -1,6 +1,8 @@
 package FindMenu;
 
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -95,7 +97,6 @@ public class FindMenuExecution {
 		buttonsPanel.add(findButton);
 		buttonsPanel.add(findReplaceButton);
 		
-
 		JPanel directionAndScopePanel = new JPanel();
 		directionAndScopePanel.setLayout(new GridLayout(1,2));
 		directionAndScopePanel.add(directionPanel);
@@ -109,6 +110,12 @@ public class FindMenuExecution {
 		findWindow.add(mainFindPanel);
 		findWindow.setVisible(true);
 
+		findButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("Find");
+			}
+		});
+		
 
 	}
 

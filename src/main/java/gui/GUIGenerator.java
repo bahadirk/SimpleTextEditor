@@ -15,15 +15,20 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.KeyStroke;
+import javax.swing.event.CaretEvent;
+import javax.swing.event.CaretListener;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.Utilities;
 
 public class GUIGenerator {
 
 	private final int WIDTH = 700;
 	private final int HEIGHT = 700;
-	
+
 	private JFrame mainFrame;
 	private JMenuBar menuBar;
 	private JEditorPane textArea;
+	private JLabel intAndRowLabel;
 
 	public GUIGenerator(String name){
 		createMainFrame(name);
@@ -64,13 +69,13 @@ public class GUIGenerator {
 		JMenuItem exit = new JMenuItem("Exit");
 		save.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, KeyEvent.CTRL_DOWN_MASK));
 		open.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_O, KeyEvent.CTRL_DOWN_MASK));
-//		saveAs.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, KeyEvent.CTRL_DOWN_MASK | KeyEvent.SHIFT_DOWN_MASK));
+		//		saveAs.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, KeyEvent.CTRL_DOWN_MASK | KeyEvent.SHIFT_DOWN_MASK));
 		fileMenu.add(open);
 		fileMenu.add(save);
 		fileMenu.add(saveAs);
 		fileMenu.add(exit);
-		
-		
+
+
 		//Find Menu Items
 		JMenuItem find = new JMenuItem("Find");
 		find.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F, KeyEvent.CTRL_DOWN_MASK));
@@ -84,20 +89,57 @@ public class GUIGenerator {
 		textArea.setEditable(true);
 		mainFrame.add(new JScrollPane(textArea), BorderLayout.CENTER);
 	}
-	
+
 	private void createInfoSection(){
-		
+
 		JPanel panel = new JPanel(new FlowLayout());
-		
-		JLabel label1 = new JLabel("");
-		JLabel label2 = new JLabel("");
-		JLabel label3 = new JLabel("");
-		
-		panel.add(label1, FlowLayout.LEFT);
+
+		intAndRowLabel = new JLabel();
+		JLabel label2 = new JLabel();
+		JLabel label3 = new JLabel();
+
+		panel.add(intAndRowLabel, FlowLayout.LEFT);
 		panel.add(label2, FlowLayout.CENTER);
 		panel.add(label3, FlowLayout.RIGHT);
 		
+		String line = getRow(1, textArea);
+		String column = getColumn(-1, (JEditorPane) textArea);
+		intAndRowLabel.setText("Line " + line + ", Column " + column);
+		
+
+		textArea.addCaretListener(new CaretListener() {
+
+			public void caretUpdate(CaretEvent e) {
+				String line = getRow(e.getDot(), (JEditorPane) e.getSource());
+				String column = getColumn(e.getDot(), (JEditorPane) e.getSource());
+				intAndRowLabel.setText("Line " + line + ", Column " + column);
+			}
+		});
+
 		mainFrame.add(panel, BorderLayout.SOUTH);
+	}
+
+	public static String getRow(int position, JEditorPane editor) {
+		int lineNumber = (position == 0) ? 1 : 0;
+		try {
+			int offs=position;
+			while(offs>0) {
+				offs=Utilities.getRowStart(editor, offs)-1;
+				lineNumber++;
+			}
+		} catch (BadLocationException e) {
+			e.printStackTrace();
+		}
+		return Integer.toString(lineNumber);
+	}
+
+	public static String getColumn(int pos, JEditorPane editor) {
+		try {
+			return Integer.toString(pos-Utilities.getRowStart(editor, pos)+1);
+		} catch (BadLocationException e) {
+			e.printStackTrace();
+		}
+		return Integer.toString(-1);
 	}
 
 	public int getWIDTH() {
@@ -119,7 +161,7 @@ public class GUIGenerator {
 	public JEditorPane getTextArea() {
 		return textArea;
 	}
-	
-	
+
+
 
 }
