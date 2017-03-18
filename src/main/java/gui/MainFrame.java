@@ -5,6 +5,7 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
@@ -16,7 +17,7 @@ public class MainFrame extends JFrame{
 	private JPanel mainPanel;
 	private ProgramMenuBar menuBar;
 	private TextArea textArea;
-	private InfoSection infoSection;
+	private InfoPanel infoSection;
 
 	public MainFrame(String name){
 		this.setName(name);
@@ -33,7 +34,7 @@ public class MainFrame extends JFrame{
 		mainPanel = new JPanel(new BorderLayout());
 		menuBar = new ProgramMenuBar();
 		textArea = new TextArea();
-		infoSection = new InfoSection();
+		infoSection = new InfoPanel();
 	}
 	
 	private void addComponents(){
@@ -41,6 +42,7 @@ public class MainFrame extends JFrame{
 		this.add(menuBar, BorderLayout.NORTH);
 		this.add(new JScrollPane(textArea), BorderLayout.CENTER);
 		this.add(infoSection, BorderLayout.SOUTH);
+		textArea.addCaretListener(infoSection.getRowAndColLabelListener());
 	}
 
 	public int getWIDTH() {
@@ -59,9 +61,6 @@ public class MainFrame extends JFrame{
 		return textArea;
 	}
 
-	public InfoSection getInfoSection() {
-		return infoSection;
-	}
 	
 	
 }
