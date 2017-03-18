@@ -1,6 +1,5 @@
 package gui;
 
-import javax.swing.JEditorPane;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
@@ -39,27 +38,14 @@ class RowAndColLabel extends JLabel implements CaretListener {
 	protected void displaySelectionInfo(final int dot, final TextArea textArea) {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
-				String row = getRow(dot, textArea);
+				
+				String row = Integer.toString(textArea.getLineCount());
 				String column = getColumn(dot, textArea);
 				setText("Line: " + row + " Column: " + column);
 			}
 		});
 	}
 	
-	private String getRow(int position, TextArea textArea) {
-		int lineNumber = (position == 0) ? 1 : 0;
-		try {
-			int offs=position;
-			while(offs>0) {
-				offs=Utilities.getRowStart(textArea, offs)-1;
-				lineNumber++;
-			}
-		} catch (BadLocationException e) {
-			e.printStackTrace();
-		}
-		return Integer.toString(lineNumber);
-	}
-
 	private String getColumn(int pos, TextArea textArea) {
 		try {
 			return Integer.toString(pos-Utilities.getRowStart(textArea, pos)+1);

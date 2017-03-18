@@ -7,7 +7,6 @@ import java.awt.event.ActionListener;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
-import javax.swing.JEditorPane;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -16,11 +15,13 @@ import javax.swing.JTextArea;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
 
+import gui.TextArea;
+
 public class FindMenuExecution {
 
-	JEditorPane textArea;
+	TextArea textArea;
 
-	public FindMenuExecution(JEditorPane textArea){
+	public FindMenuExecution(TextArea textArea){
 		this.textArea = textArea;
 	}
 

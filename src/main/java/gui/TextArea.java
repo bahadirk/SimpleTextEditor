@@ -1,17 +1,14 @@
 package gui;
 
-import javax.swing.JEditorPane;
-import javax.swing.JLabel;
+import javax.swing.JTextArea;
 
-public class TextArea extends JEditorPane {
+public class TextArea extends JTextArea {
 
-	JLabel label;
-	
+
 	public TextArea(){
-		this.setEditable(true);
 	}
-	
-	public JEditorPane getTextArea(){
+
+	public JTextArea getTextArea(){
 		return this;
 	}
 	

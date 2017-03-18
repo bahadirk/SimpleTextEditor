@@ -6,19 +6,20 @@ import java.awt.event.KeyEvent;
 
 import javax.swing.AbstractAction;
 import javax.swing.Action;
-import javax.swing.JEditorPane;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.KeyStroke;
 
+import gui.TextArea;
+
 public class FindMenuController {
 	
 	JMenu findMenu;
-	JEditorPane textArea;
+	TextArea textArea;
 	FindMenuExecution findMenuExecution;
 	FindMenuCommand find;
 	
-	public FindMenuController(JMenu findMenu, JEditorPane textArea){
+	public FindMenuController(JMenu findMenu, TextArea textArea){
 		this.findMenu = findMenu;
 		this.textArea = textArea;
 		
@@ -26,7 +27,7 @@ public class FindMenuController {
 		generateFindMenuHandlers();
 	}
 	
-	private void generateFindMenuExecutions(JEditorPane textArea){
+	private void generateFindMenuExecutions(TextArea textArea){
 		this.findMenuExecution = new FindMenuExecution(textArea);
 		find = new Find(findMenuExecution);
 	}

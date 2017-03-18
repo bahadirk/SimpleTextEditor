@@ -9,7 +9,7 @@ import gui.TextArea;
 public class Client {
 	
 	public static void main(String[] agrs){
-		
+	
 		MainFrame mainFrame = new MainFrame("Simple Text Editor");
 		mainFrame.setVisible(true);
 

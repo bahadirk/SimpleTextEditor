@@ -23,7 +23,6 @@ public class FileMenuExecution {
 	}
 
 	public void openFile(){
-
 		JFileChooser fileChooser = new JFileChooser();
 		fileChooser.setCurrentDirectory(currentDirectory);
 		fileChooser.setDialogTitle("Open File");

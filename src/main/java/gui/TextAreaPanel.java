@@ -7,16 +7,16 @@ import javax.swing.JScrollPane;
 
 public class TextAreaPanel extends JPanel{
 	
-	private RowPanel rowPanel;
+	private LineArea lineArea;
 	private TextArea textArea;
 	
 	public TextAreaPanel(){
-		rowPanel = new RowPanel();
+		lineArea = new LineArea();
 		textArea = new TextArea();
 		
-		//textArea.addCaretListener(rowPanel.getRowPanelCaretListener());
+		textArea.addCaretListener(lineArea.getRowPanelCaretListener());
 		setLayout(new GridLayout(1,2));
-		add(rowPanel);
+		add(new JScrollPane(lineArea));
 		add(new JScrollPane(textArea));
 	}
 

@@ -2,13 +2,10 @@ package gui;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.awt.GridLayout;
 import java.awt.Toolkit;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
 
 public class MainFrame extends JFrame{
 
@@ -17,7 +14,6 @@ public class MainFrame extends JFrame{
 	
 	private JPanel mainPanel;
 	private ProgramMenuBar menuBar;
-	private TextArea textArea;
 	private InfoPanel infoPanel;
 	private TextAreaPanel textAreaPanel;
 
