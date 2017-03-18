@@ -2,12 +2,13 @@ package gui;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.GridLayout;
 import java.awt.Toolkit;
 
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 
 public class MainFrame extends JFrame{
 
@@ -17,7 +18,8 @@ public class MainFrame extends JFrame{
 	private JPanel mainPanel;
 	private ProgramMenuBar menuBar;
 	private TextArea textArea;
-	private InfoPanel infoSection;
+	private InfoPanel infoPanel;
+	private TextAreaPanel textAreaPanel;
 
 	public MainFrame(String name){
 		this.setName(name);
@@ -33,16 +35,18 @@ public class MainFrame extends JFrame{
 	private void createOtherGuiComponents(){
 		mainPanel = new JPanel(new BorderLayout());
 		menuBar = new ProgramMenuBar();
-		textArea = new TextArea();
-		infoSection = new InfoPanel();
+		infoPanel = new InfoPanel();
+		textAreaPanel = new TextAreaPanel();
 	}
 	
 	private void addComponents(){
 		this.add(mainPanel);
 		this.add(menuBar, BorderLayout.NORTH);
-		this.add(new JScrollPane(textArea), BorderLayout.CENTER);
-		this.add(infoSection, BorderLayout.SOUTH);
-		textArea.addCaretListener(infoSection.getRowAndColLabelListener());
+		this.add(textAreaPanel, BorderLayout.CENTER);
+		this.add(infoPanel, BorderLayout.SOUTH);
+			
+		textAreaPanel.getTextArea().addCaretListener(infoPanel.getRowAndColLabelListener());
+		
 	}
 
 	public int getWIDTH() {
@@ -56,11 +60,9 @@ public class MainFrame extends JFrame{
 	public ProgramMenuBar getProgramMenuBar(){
 		return menuBar;
 	}
-	
-	public TextArea getTextArea() {
-		return textArea;
-	}
 
-	
+	public TextAreaPanel getTextAreaPanel() {
+		return textAreaPanel;
+	}
 	
 }

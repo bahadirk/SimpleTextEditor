@@ -17,7 +17,7 @@ public class Client {
 		JMenu fileMenu = menuBar.getMenu(0);
 		JMenu findMenu = menuBar.getMenu(1);
 		
-		TextArea textArea = mainFrame.getTextArea();
+		TextArea textArea = mainFrame.getTextAreaPanel().getTextArea();
 		
 		FileMenuController fileMenuController = new FileMenuController(fileMenu, textArea);
 		FindMenuController findMenuController = new FindMenuController(findMenu, textArea);

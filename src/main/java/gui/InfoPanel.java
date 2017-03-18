@@ -46,12 +46,12 @@ class RowAndColLabel extends JLabel implements CaretListener {
 		});
 	}
 	
-	private String getRow(int position, JEditorPane editor) {
+	private String getRow(int position, TextArea textArea) {
 		int lineNumber = (position == 0) ? 1 : 0;
 		try {
 			int offs=position;
 			while(offs>0) {
-				offs=Utilities.getRowStart(editor, offs)-1;
+				offs=Utilities.getRowStart(textArea, offs)-1;
 				lineNumber++;
 			}
 		} catch (BadLocationException e) {
@@ -60,9 +60,9 @@ class RowAndColLabel extends JLabel implements CaretListener {
 		return Integer.toString(lineNumber);
 	}
 
-	private String getColumn(int pos, JEditorPane editor) {
+	private String getColumn(int pos, TextArea textArea) {
 		try {
-			return Integer.toString(pos-Utilities.getRowStart(editor, pos)+1);
+			return Integer.toString(pos-Utilities.getRowStart(textArea, pos)+1);
 		} catch (BadLocationException e) {
 			e.printStackTrace();
 		}

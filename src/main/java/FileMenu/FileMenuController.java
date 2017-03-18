@@ -6,10 +6,11 @@ import java.awt.event.KeyEvent;
 
 import javax.swing.AbstractAction;
 import javax.swing.Action;
-import javax.swing.JEditorPane;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.KeyStroke;
+
+import gui.TextArea;
 
 public class FileMenuController {
 
@@ -20,7 +21,7 @@ public class FileMenuController {
 	FileMenuCommand saveAsFile;
 	FileMenuExecution fileMenuExecution;
 
-	public FileMenuController(JMenu fileMenu, JEditorPane textArea){
+	public FileMenuController(JMenu fileMenu, TextArea textArea){
 
 		this.fileMenu = fileMenu;
 
@@ -29,7 +30,7 @@ public class FileMenuController {
 
 	}
 
-	private void generateFileMenuExecutions(JEditorPane textArea){
+	private void generateFileMenuExecutions(TextArea textArea){
 		this.fileMenuExecution = new FileMenuExecution(textArea);	
 		openFile = new OpenFile(fileMenuExecution);
 		saveFile = new SaveFile(fileMenuExecution);

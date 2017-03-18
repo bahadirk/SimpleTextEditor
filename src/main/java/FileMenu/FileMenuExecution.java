@@ -7,17 +7,18 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
-import javax.swing.JEditorPane;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
+import gui.TextArea;
+
 public class FileMenuExecution {
 
-	JEditorPane textArea;
+	TextArea textArea;
 	File currentDirectory = new File(System.getProperty("user.dir"));
 	String currentFilePath;
 	
-	public FileMenuExecution(JEditorPane textArea){
+	public FileMenuExecution(TextArea textArea){
 		this.textArea = textArea;
 	}
 
