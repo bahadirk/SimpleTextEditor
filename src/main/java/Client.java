@@ -1,18 +1,23 @@
-import javax.swing.JEditorPane;
 import javax.swing.JMenu;
 
 import FileMenu.FileMenuController;
 import FindMenu.FindMenuController;
-import gui.GUIGenerator;
+import gui.MainFrame;
+import gui.ProgramMenuBar;
+import gui.TextArea;
 
 public class Client {
 	
 	public static void main(String[] agrs){
-		GUIGenerator gui = new GUIGenerator("Simple Text Editor");
 		
-		JEditorPane textArea = gui.getTextArea();
-		JMenu fileMenu = gui.getMenuBar().getMenu(0);
-		JMenu findMenu = gui.getMenuBar().getMenu(1);
+		MainFrame mainFrame = new MainFrame("Simple Text Editor");
+		mainFrame.setVisible(true);
+
+		ProgramMenuBar menuBar = mainFrame.getProgramMenuBar();
+		JMenu fileMenu = menuBar.getMenu(0);
+		JMenu findMenu = menuBar.getMenu(1);
+		
+		TextArea textArea = mainFrame.getTextArea();
 		
 		FileMenuController fileMenuController = new FileMenuController(fileMenu, textArea);
 		FindMenuController findMenuController = new FindMenuController(findMenu, textArea);
