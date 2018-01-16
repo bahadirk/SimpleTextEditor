@@ -34,6 +34,8 @@ public class LineArea extends JTextArea implements CaretListener{
 				if(textAreaRowNumber == lineAreaRowNumber){
 					if(lineAreaRowNumber == 1){
 						setText("1");
+					}else {
+						
 					}
 				}else{
 					String currentText = getText();
@@ -44,6 +46,8 @@ public class LineArea extends JTextArea implements CaretListener{
 							currentText += "\n" + Integer.toString(i+1);
 							setText(currentText);
 						}
+					}else {
+						
 					}
 				}
 			
