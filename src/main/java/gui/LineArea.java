@@ -37,7 +37,7 @@ public class LineArea extends JTextArea implements CaretListener{
 					}
 				}else{
 					String currentText = getText();
-					String textAreaCurrentText = textArea.getText();
+					//String textAreaCurrentText = textArea.getText();
 					
 					if(textAreaRowNumber > lineAreaRowNumber){
 						for(int i = lineAreaRowNumber; i<textAreaRowNumber; i++){
