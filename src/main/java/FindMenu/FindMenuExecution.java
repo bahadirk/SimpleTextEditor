@@ -21,39 +21,45 @@ public class FindMenuExecution {
 
 	TextArea textArea;
 
-	public FindMenuExecution(TextArea textArea){
+	/**
+	 * 
+	 * A.java Interface class that has the following methods.
+	 * 
+	 * @author Bahadir
+	 * @since 05-13-2009
+	 * @param textarea
+	 *            is a parameter
+	 */
+	public FindMenuExecution(TextArea textArea) {
 		this.textArea = textArea;
 	}
 
-	public void find(){
+	public void find() {
 		JFrame findWindow = new JFrame("Find");
 		findWindow.setSize(350, 500);
 		findWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		findWindow.setLocation(findWindow.getSize().width/4, findWindow.getSize().height);
+		findWindow.setLocation(findWindow.getSize().width / 4, findWindow.getSize().height);
 
 		JPanel mainFindPanel = new JPanel();
 		mainFindPanel.setLayout(new GridLayout(5, 1));
 
 		JPanel findReplacePanel = new JPanel();
-		findReplacePanel.setLayout(new GridLayout(2,1));
-		findReplacePanel.setBorder(new EmptyBorder(10,10,10,10));
-
+		findReplacePanel.setLayout(new GridLayout(2, 1));
+		findReplacePanel.setBorder(new EmptyBorder(10, 10, 10, 10));
 
 		JLabel findLabel = new JLabel("Find:");
 		JLabel replaceLabel = new JLabel("Replace With:");
 
-		JTextArea findTextArea = new JTextArea(5,10);
-		JTextArea replaceTextArea = new JTextArea(5,10);
-
+		JTextArea findTextArea = new JTextArea(5, 10);
+		JTextArea replaceTextArea = new JTextArea(5, 10);
 
 		findReplacePanel.add(findLabel);
 		findReplacePanel.add(findTextArea);
 		findReplacePanel.add(replaceLabel);
 		findReplacePanel.add(replaceTextArea);
 
-
 		JPanel directionPanel = new JPanel();
-		directionPanel.setBorder(new EmptyBorder(10,10,10,10));
+		directionPanel.setBorder(new EmptyBorder(10, 10, 10, 10));
 		TitledBorder directionTitle = new TitledBorder("Direction");
 		directionTitle.setTitleJustification(TitledBorder.CENTER);
 		directionTitle.setTitlePosition(TitledBorder.TOP);
@@ -78,8 +84,7 @@ public class FindMenuExecution {
 		scopeGroup.add(selectedItems);
 		scopePanel.add(all);
 		scopePanel.add(selectedItems);
-		
-		
+
 		JPanel optionPanel = new JPanel();
 		TitledBorder optionTitle = new TitledBorder("Option");
 		optionTitle.setTitleJustification(TitledBorder.CENTER);
@@ -89,17 +94,16 @@ public class FindMenuExecution {
 		JCheckBox wrapSearch = new JCheckBox("Wrap Search");
 		optionPanel.add(caseSensitive);
 		optionPanel.add(wrapSearch);
-		
-		
+
 		JPanel buttonsPanel = new JPanel();
-		buttonsPanel.setBorder(new EmptyBorder(10,10,10,10));
+		buttonsPanel.setBorder(new EmptyBorder(10, 10, 10, 10));
 		JButton findButton = new JButton("Find");
 		JButton findReplaceButton = new JButton("Find/Replace Button");
 		buttonsPanel.add(findButton);
 		buttonsPanel.add(findReplaceButton);
-		
+
 		JPanel directionAndScopePanel = new JPanel();
-		directionAndScopePanel.setLayout(new GridLayout(1,2));
+		directionAndScopePanel.setLayout(new GridLayout(1, 2));
 		directionAndScopePanel.add(directionPanel);
 		directionAndScopePanel.add(scopePanel);
 
@@ -116,7 +120,6 @@ public class FindMenuExecution {
 				System.out.println("Find");
 			}
 		});
-		
 
 	}
 
