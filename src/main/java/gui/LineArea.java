@@ -42,6 +42,8 @@ public class LineArea extends JTextArea implements CaretListener {
 							currentText += "\n" + Integer.toString(i + 1);
 							setText(currentText);
 						}
+					}else{
+						
 					}
 				}
 
